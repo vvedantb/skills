@@ -1,3 +1,8 @@
+---
+name: convex-rules
+description: Convex development guidelines and best practices for functions, schemas, queries, mutations, and actions.
+---
+
 # Convex guidelines
 
 ## Function guidelines

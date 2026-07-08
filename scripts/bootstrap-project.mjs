@@ -45,9 +45,7 @@ function parseArgs(argv) {
 function run(command, args, cwd) {
   console.log(`> ${command} ${args.join(" ")}`);
   const result = spawnSync(command, args, { cwd, stdio: "inherit", shell: process.platform === "win32" });
-  if (result.status !== 0) {
-    process.exit(result.status ?? 1);
-  }
+  return result.status ?? 1;
 }
 
 const opts = parseArgs(process.argv.slice(2));
@@ -59,15 +57,37 @@ if (!existsSync(manifestPath)) {
 }
 
 const skills = JSON.parse(readFileSync(manifestPath, "utf8"));
-console.log(`Bootstrapping ${skills.length} skills into ${opts.project} from ${manifestPath}`);
+const lockPath = join(opts.project, "skills-lock.json");
+const installed = new Set();
+if (existsSync(lockPath)) {
+  const lock = JSON.parse(readFileSync(lockPath, "utf8"));
+  for (const name of Object.keys(lock.skills ?? {})) installed.add(name);
+}
 
+console.log(`Bootstrapping ${skills.length} skills into ${opts.project} from ${manifestPath}`);
+if (installed.size) console.log(`Skipping ${installed.size} already in skills-lock.json`);
+
+let failed = 0;
 for (const name of skills) {
+  if (installed.has(name)) {
+    console.log(`= skip ${name} (already installed)`);
+    continue;
+  }
   const pkg = `vvedantb/skills@${name}`;
   if (opts.dryRun) {
     console.log(`[dry-run] npx skills add ${pkg} -y`);
     continue;
   }
-  run("npx", ["skills", "add", pkg, "-y"], opts.project);
+  const status = run("npx", ["skills", "add", pkg, "-y"], opts.project);
+  if (status !== 0) {
+    failed++;
+    console.error(`! failed to install ${name} (exit ${status})`);
+  }
+}
+
+if (failed) {
+  console.error(`\n${failed} skill(s) failed to install.`);
+  process.exit(1);
 }
 
 console.log(`\nDone. Verify skills-lock.json and .agents/skills/ in ${opts.project}`);

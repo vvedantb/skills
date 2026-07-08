@@ -1,5 +1,5 @@
 ---
-name: convex-dev-agent
+name: convex-agent
 description: Build AI agents with message history, vector search, and long-running workflows that stay reactive to your Convex database changes. Use this skill whenever the user mentions ai, agent, ai agent. Also trigger when discussing build ai agents with persistent memory, ai agent with vector search capabilities, even if they don't explicitly ask for AI Agent.
 ---
 
