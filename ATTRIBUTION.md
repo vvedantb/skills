@@ -1,15 +1,13 @@
 # Attribution
 
-Custom skills in this repository. Third-party skills install directly from their upstream repos (see `manifests/eva.json` and `manifests/vmem.json`).
+Custom skills in this repository — the only skills that belong here.
 
-| Skill | Author |
-|-------|--------|
-| agent-browser | Vedant (custom) |
-| code-structure | Vedant (custom) |
-| convex-dev-workflow | Vedant (custom) |
-| convex-rules | Vedant (custom) |
-| convex-agent | Vedant (custom, vmem) |
-| eva-product-video | Vedant (eva-specific) |
-| how | Vedant (custom) |
-| svg-animations | Vedant (custom) |
-| zoom-out | Vedant (custom) |
+| Skill | Author | Notes |
+|-------|--------|-------|
+| ship | Vedant | Stage, commit, and push |
+| commit | Vedant | Stage and commit (no push) |
+| push | Vedant | Commit staged changes and push |
+| eva-product-video | Vedant | Eva Remotion demo videos |
+| vedant-voice | Vedant | Spoken presentation voice (from vmem `feat/presentation-slides`) |
+
+Third-party skills install directly from upstream repos. See `manifests/eva.json` and `manifests/vmem.json`.

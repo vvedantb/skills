@@ -6,20 +6,19 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { EVA_CUSTOM, VMEM_CUSTOM } from "./custom-skills.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 
-import { CUSTOM_SKILLS } from "./custom-skills.mjs";
-
 const EVA_MANIFEST = [
-  "agent-browser", "brandkit", "caveman", "caveman-commit", "caveman-compress",
+  "ship", "commit", "push", "agent-browser", "brandkit", "caveman", "caveman-commit", "caveman-compress",
   "caveman-help", "caveman-review", "clerk", "clerk-backend-api", "clerk-nextjs-patterns",
-  "clerk-setup", "clerk-testing", "clerk-webhooks", "code-structure",
-  "convex-create-component", "convex-dev-workflow", "convex-migration-helper",
-  "convex-performance-audit", "convex-rules", "convex-setup-auth",
+  "clerk-setup", "clerk-testing", "clerk-webhooks",
+  "convex-create-component", "convex-migration-helper",
+  "convex-performance-audit", "convex-setup-auth",
   "design-taste-frontend", "design-taste-frontend-v1", "eva-product-video",
-  "full-output-enforcement", "gpt-taste", "grill-me", "high-end-visual-design", "how",
+  "full-output-enforcement", "gpt-taste", "grill-me", "high-end-visual-design",
   "image-to-code", "imagegen-frontend-mobile", "imagegen-frontend-web",
   "improve-codebase-architecture", "industrial-brutalist-ui", "make-interfaces-feel-better",
   "minimalist-ui", "no-ui-flash", "quality-code", "redesign-existing-projects",
@@ -29,13 +28,13 @@ const EVA_MANIFEST = [
 ];
 
 const VMEM_MANIFEST = [
-  "agent-browser", "brandkit", "caveman", "caveman-commit", "caveman-compress",
-  "caveman-help", "caveman-review", "code-structure", "convex-agent",
-  "convex-create-component", "convex-dev-workflow", "convex-migration-helper",
-  "convex-performance-audit", "convex-rules", "convex-setup-auth", "design-an-interface",
+  "ship", "commit", "push", "vedant-voice", "agent-browser", "brandkit", "caveman", "caveman-commit",
+  "caveman-compress", "caveman-help", "caveman-review",
+  "convex-create-component", "convex-migration-helper",
+  "convex-performance-audit", "convex-setup-auth", "design-an-interface",
   "design-taste-frontend", "design-taste-frontend-v1", "edit-article", "einstein-simplify",
   "elite-powerpoint-designer", "framer-motion-animator", "full-output-enforcement",
-  "git-guardrails-claude-code", "gpt-taste", "grill-me", "high-end-visual-design", "how",
+  "git-guardrails-claude-code", "gpt-taste", "grill-me", "high-end-visual-design",
   "image-to-code", "imagegen-frontend-mobile", "imagegen-frontend-web",
   "improve-codebase-architecture", "industrial-brutalist-ui", "make-interfaces-feel-better",
   "migrate-to-shoehorn", "minimalist-ui", "neo4j-cypher-guide", "neo4j-cypher-skill",
@@ -47,8 +46,11 @@ const VMEM_MANIFEST = [
   "to-spec", "writing-great-skills", "write-better-error-messages",
 ];
 
-/** Skills not in .bak lockfiles but needed for full manifests. */
+/** Upstream for skills not in .bak lockfiles. */
 const EXTRA_UPSTREAM = {
+  "agent-browser": "vercel-labs/agent-browser",
+  "zoom-out": "mattpocock/skills",
+  "svg-animations": "supermemoryai/skills",
   "grill-me": "mattpocock/skills",
   "improve-codebase-architecture": "mattpocock/skills",
   "ubiquitous-language": "mattpocock/skills",
@@ -59,16 +61,7 @@ const EXTRA_UPSTREAM = {
   "vercel-composition-patterns": "vercel-labs/agent-skills",
   "vercel-react-best-practices": "vercel-labs/agent-skills",
   "web-design-guidelines": "vercel-labs/agent-skills",
-  "agent-browser": "vvedantb/skills",
-  "code-structure": "vvedantb/skills",
-  "convex-dev-workflow": "vvedantb/skills",
-  "convex-rules": "vvedantb/skills",
-  "eva-product-video": "vvedantb/skills",
-  "how": "vvedantb/skills",
-  "svg-animations": "vvedantb/skills",
-  "zoom-out": "vvedantb/skills",
   "expo-upgrade": "expo/skills",
-  "convex-agent": "vvedantb/skills",
 };
 
 function loadUpstreamFromLock(path) {
@@ -81,7 +74,7 @@ function loadUpstreamFromLock(path) {
   return map;
 }
 
-function buildManifest(skillNames, ...upstreamMaps) {
+function buildManifest(skillNames, customSkills, ...upstreamMaps) {
   const custom = [];
   const bySource = new Map();
   const merged = new Map();
@@ -93,7 +86,7 @@ function buildManifest(skillNames, ...upstreamMaps) {
   }
 
   for (const name of skillNames) {
-    if (CUSTOM_SKILLS.includes(name)) {
+    if (customSkills.includes(name)) {
       custom.push(name);
       continue;
     }
@@ -123,8 +116,8 @@ const evaUpstream = loadUpstreamFromLock(resolve(ROOT, "..", "eva", "skills-lock
 const vmemUpstream = loadUpstreamFromLock(resolve(ROOT, "..", "vmem", "skills-lock.json.bak"));
 const allUpstream = new Map([...evaUpstream, ...vmemUpstream]);
 
-const eva = buildManifest(EVA_MANIFEST, allUpstream);
-const vmem = buildManifest(VMEM_MANIFEST, allUpstream);
+const eva = buildManifest(EVA_MANIFEST, EVA_CUSTOM, allUpstream);
+const vmem = buildManifest(VMEM_MANIFEST, VMEM_CUSTOM, allUpstream);
 
 writeFileSync(join(ROOT, "manifests", "eva.json"), JSON.stringify(eva, null, 2) + "\n");
 writeFileSync(join(ROOT, "manifests", "vmem.json"), JSON.stringify(vmem, null, 2) + "\n");

@@ -1,12 +1,11 @@
-/** Skills authored in vvedantb/skills — everything else installs from upstream. */
+/** Skills authored in vvedantb/skills — the only folders in this catalog. */
 export const CUSTOM_SKILLS = [
-  "agent-browser",
-  "code-structure",
-  "convex-agent",
-  "convex-dev-workflow",
-  "convex-rules",
+  "ship",
+  "push",
+  "commit",
   "eva-product-video",
-  "how",
-  "svg-animations",
-  "zoom-out",
+  "vedant-voice",
 ];
+
+export const EVA_CUSTOM = ["ship", "push", "commit", "eva-product-video"];
+export const VMEM_CUSTOM = ["ship", "push", "commit", "vedant-voice"];

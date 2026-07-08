@@ -1,13 +1,9 @@
 {
   "custom": [
-    "agent-browser",
-    "code-structure",
-    "convex-dev-workflow",
-    "convex-rules",
+    "commit",
     "eva-product-video",
-    "how",
-    "svg-animations",
-    "zoom-out"
+    "push",
+    "ship"
   ],
   "upstream": [
     {
@@ -76,7 +72,8 @@
         "grill-me",
         "improve-codebase-architecture",
         "to-spec",
-        "ubiquitous-language"
+        "ubiquitous-language",
+        "zoom-out"
       ]
     },
     {
@@ -85,6 +82,18 @@
         "no-ui-flash",
         "quality-code",
         "write-better-error-messages"
+      ]
+    },
+    {
+      "source": "supermemoryai/skills",
+      "skills": [
+        "svg-animations"
+      ]
+    },
+    {
+      "source": "vercel-labs/agent-browser",
+      "skills": [
+        "agent-browser"
       ]
     },
     {

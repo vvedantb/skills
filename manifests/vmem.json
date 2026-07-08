@@ -1,12 +1,9 @@
 {
   "custom": [
-    "agent-browser",
-    "code-structure",
-    "convex-agent",
-    "convex-dev-workflow",
-    "convex-rules",
-    "how",
-    "svg-animations"
+    "commit",
+    "push",
+    "ship",
+    "vedant-voice"
   ],
   "upstream": [
     {
@@ -128,9 +125,21 @@
       ]
     },
     {
+      "source": "supermemoryai/skills",
+      "skills": [
+        "svg-animations"
+      ]
+    },
+    {
       "source": "tomasonjo/blogs",
       "skills": [
         "neo4j-cypher-guide"
+      ]
+    },
+    {
+      "source": "vercel-labs/agent-browser",
+      "skills": [
+        "agent-browser"
       ]
     },
     {
