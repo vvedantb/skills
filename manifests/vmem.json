@@ -2,6 +2,7 @@
   "custom": [
     "agent-browser",
     "code-structure",
+    "convex-agent",
     "convex-dev-workflow",
     "convex-rules",
     "how",
@@ -23,7 +24,6 @@
     {
       "source": "get-convex/agent-skills",
       "skills": [
-        "convex-agent",
         "convex-create-component",
         "convex-migration-helper",
         "convex-performance-audit",
@@ -61,8 +61,7 @@
         "caveman-commit",
         "caveman-compress",
         "caveman-help",
-        "caveman-review",
-        "compress"
+        "caveman-review"
       ]
     },
     {
@@ -92,15 +91,14 @@
         "grill-me",
         "improve-codebase-architecture",
         "migrate-to-shoehorn",
-        "prd-to-issues",
-        "prd-to-plan",
         "request-refactor-plan",
         "setup-pre-commit",
         "tdd",
-        "triage-issue",
+        "to-spec",
+        "to-tickets",
+        "triage",
         "ubiquitous-language",
-        "write-a-prd",
-        "write-a-skill"
+        "writing-great-skills"
       ]
     },
     {

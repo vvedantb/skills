@@ -15,7 +15,7 @@ import { CUSTOM_SKILLS } from "./custom-skills.mjs";
 const EVA_MANIFEST = [
   "agent-browser", "brandkit", "caveman", "caveman-commit", "caveman-compress",
   "caveman-help", "caveman-review", "clerk", "clerk-backend-api", "clerk-nextjs-patterns",
-  "clerk-setup", "clerk-testing", "clerk-webhooks", "code-structure", "compress",
+  "clerk-setup", "clerk-testing", "clerk-webhooks", "code-structure",
   "convex-create-component", "convex-dev-workflow", "convex-migration-helper",
   "convex-performance-audit", "convex-rules", "convex-setup-auth",
   "design-taste-frontend", "design-taste-frontend-v1", "eva-product-video",
@@ -25,12 +25,12 @@ const EVA_MANIFEST = [
   "minimalist-ui", "no-ui-flash", "quality-code", "redesign-existing-projects",
   "stitch-design-taste", "svg-animations", "transitions-dev", "ubiquitous-language",
   "vercel-composition-patterns", "vercel-react-best-practices", "web-design-guidelines",
-  "write-a-prd", "write-better-error-messages", "zoom-out",
+  "to-spec", "write-better-error-messages", "zoom-out",
 ];
 
 const VMEM_MANIFEST = [
   "agent-browser", "brandkit", "caveman", "caveman-commit", "caveman-compress",
-  "caveman-help", "caveman-review", "code-structure", "compress", "convex-agent",
+  "caveman-help", "caveman-review", "code-structure", "convex-agent",
   "convex-create-component", "convex-dev-workflow", "convex-migration-helper",
   "convex-performance-audit", "convex-rules", "convex-setup-auth", "design-an-interface",
   "design-taste-frontend", "design-taste-frontend-v1", "edit-article", "einstein-simplify",
@@ -39,12 +39,12 @@ const VMEM_MANIFEST = [
   "image-to-code", "imagegen-frontend-mobile", "imagegen-frontend-web",
   "improve-codebase-architecture", "industrial-brutalist-ui", "make-interfaces-feel-better",
   "migrate-to-shoehorn", "minimalist-ui", "neo4j-cypher-guide", "neo4j-cypher-skill",
-  "neon-postgres", "no-ui-flash", "prd-to-issues", "prd-to-plan", "quality-code",
+  "neon-postgres", "no-ui-flash", "to-tickets", "quality-code",
   "redesign-existing-projects", "request-refactor-plan", "setup-pre-commit",
   "stitch-design-taste", "stop-slop", "svg-animations", "tdd", "text-to-lottie",
-  "transitions-dev", "triage-issue", "ubiquitous-language", "upgrading-expo",
+  "transitions-dev", "triage", "ubiquitous-language", "upgrading-expo",
   "vercel-composition-patterns", "vercel-react-best-practices", "web-design-guidelines",
-  "write-a-prd", "write-a-skill", "write-better-error-messages",
+  "to-spec", "writing-great-skills", "write-better-error-messages",
 ];
 
 /** Skills not in .bak lockfiles but needed for full manifests. */
@@ -52,7 +52,10 @@ const EXTRA_UPSTREAM = {
   "grill-me": "mattpocock/skills",
   "improve-codebase-architecture": "mattpocock/skills",
   "ubiquitous-language": "mattpocock/skills",
-  "write-a-prd": "mattpocock/skills",
+  "to-spec": "mattpocock/skills",
+  "to-tickets": "mattpocock/skills",
+  "writing-great-skills": "mattpocock/skills",
+  "triage": "mattpocock/skills",
   "vercel-composition-patterns": "vercel-labs/agent-skills",
   "vercel-react-best-practices": "vercel-labs/agent-skills",
   "web-design-guidelines": "vercel-labs/agent-skills",
@@ -64,7 +67,7 @@ const EXTRA_UPSTREAM = {
   "how": "vvedantb/skills",
   "svg-animations": "vvedantb/skills",
   "zoom-out": "vvedantb/skills",
-  "convex-agent": "get-convex/agent-skills",
+  "convex-agent": "vvedantb/skills",
 };
 
 function loadUpstreamFromLock(path) {

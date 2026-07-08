@@ -49,8 +49,7 @@
         "caveman-commit",
         "caveman-compress",
         "caveman-help",
-        "caveman-review",
-        "compress"
+        "caveman-review"
       ]
     },
     {
@@ -76,8 +75,8 @@
       "skills": [
         "grill-me",
         "improve-codebase-architecture",
-        "ubiquitous-language",
-        "write-a-prd"
+        "to-spec",
+        "ubiquitous-language"
       ]
     },
     {
