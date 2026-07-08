@@ -42,7 +42,7 @@ const VMEM_MANIFEST = [
   "neon-postgres", "no-ui-flash", "to-tickets", "quality-code",
   "redesign-existing-projects", "request-refactor-plan", "setup-pre-commit",
   "stitch-design-taste", "stop-slop", "svg-animations", "tdd", "text-to-lottie",
-  "transitions-dev", "triage", "ubiquitous-language", "upgrading-expo",
+  "transitions-dev", "triage", "ubiquitous-language", "expo-upgrade",
   "vercel-composition-patterns", "vercel-react-best-practices", "web-design-guidelines",
   "to-spec", "writing-great-skills", "write-better-error-messages",
 ];
@@ -67,6 +67,7 @@ const EXTRA_UPSTREAM = {
   "how": "vvedantb/skills",
   "svg-animations": "vvedantb/skills",
   "zoom-out": "vvedantb/skills",
+  "expo-upgrade": "expo/skills",
   "convex-agent": "vvedantb/skills",
 };
 
