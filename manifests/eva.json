@@ -1,51 +1,100 @@
-[
-  "agent-browser",
-  "brandkit",
-  "caveman",
-  "caveman-commit",
-  "caveman-compress",
-  "caveman-help",
-  "caveman-review",
-  "clerk",
-  "clerk-backend-api",
-  "clerk-nextjs-patterns",
-  "clerk-setup",
-  "clerk-testing",
-  "clerk-webhooks",
-  "code-structure",
-  "compress",
-  "convex-create-component",
-  "convex-dev-workflow",
-  "convex-migration-helper",
-  "convex-performance-audit",
-  "convex-rules",
-  "convex-setup-auth",
-  "design-taste-frontend",
-  "design-taste-frontend-v1",
-  "eva-product-video",
-  "full-output-enforcement",
-  "gpt-taste",
-  "grill-me",
-  "high-end-visual-design",
-  "how",
-  "image-to-code",
-  "imagegen-frontend-mobile",
-  "imagegen-frontend-web",
-  "improve-codebase-architecture",
-  "industrial-brutalist-ui",
-  "make-interfaces-feel-better",
-  "minimalist-ui",
-  "no-ui-flash",
-  "quality-code",
-  "redesign-existing-projects",
-  "stitch-design-taste",
-  "svg-animations",
-  "transitions-dev",
-  "ubiquitous-language",
-  "vercel-composition-patterns",
-  "vercel-react-best-practices",
-  "web-design-guidelines",
-  "write-a-prd",
-  "write-better-error-messages",
-  "zoom-out"
-]
+{
+  "custom": [
+    "agent-browser",
+    "code-structure",
+    "convex-dev-workflow",
+    "convex-rules",
+    "eva-product-video",
+    "how",
+    "svg-animations",
+    "zoom-out"
+  ],
+  "upstream": [
+    {
+      "source": "clerk/skills",
+      "skills": [
+        "clerk",
+        "clerk-backend-api",
+        "clerk-nextjs-patterns",
+        "clerk-setup",
+        "clerk-testing",
+        "clerk-webhooks"
+      ]
+    },
+    {
+      "source": "get-convex/agent-skills",
+      "skills": [
+        "convex-create-component",
+        "convex-migration-helper",
+        "convex-performance-audit",
+        "convex-setup-auth"
+      ]
+    },
+    {
+      "source": "Jakubantalik/transitions.dev",
+      "skills": [
+        "transitions-dev"
+      ]
+    },
+    {
+      "source": "jakubkrehel/make-interfaces-feel-better",
+      "skills": [
+        "make-interfaces-feel-better"
+      ]
+    },
+    {
+      "source": "JuliusBrussee/caveman",
+      "skills": [
+        "caveman",
+        "caveman-commit",
+        "caveman-compress",
+        "caveman-help",
+        "caveman-review",
+        "compress"
+      ]
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "skills": [
+        "brandkit",
+        "design-taste-frontend",
+        "design-taste-frontend-v1",
+        "full-output-enforcement",
+        "gpt-taste",
+        "high-end-visual-design",
+        "image-to-code",
+        "imagegen-frontend-mobile",
+        "imagegen-frontend-web",
+        "industrial-brutalist-ui",
+        "minimalist-ui",
+        "redesign-existing-projects",
+        "stitch-design-taste"
+      ]
+    },
+    {
+      "source": "mattpocock/skills",
+      "skills": [
+        "grill-me",
+        "improve-codebase-architecture",
+        "ubiquitous-language",
+        "write-a-prd"
+      ]
+    },
+    {
+      "source": "RhysSullivan/skills",
+      "skills": [
+        "no-ui-flash",
+        "quality-code",
+        "write-better-error-messages"
+      ]
+    },
+    {
+      "source": "vercel-labs/agent-skills",
+      "skills": [
+        "vercel-composition-patterns",
+        "vercel-react-best-practices",
+        "web-design-guidelines"
+      ]
+    }
+  ]
+}

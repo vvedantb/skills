@@ -1,10 +1,12 @@
 # vvedantb/skills
 
-Personal agent-skills catalog for Cursor, Claude Code, and Eva. One repo to edit; consumers install via the [Skills CLI](https://github.com/vercel-labs/skills).
+Personal **custom** agent-skills catalog for Cursor, Claude Code, and Eva. Third-party skills install directly from upstream repos; only skills you author live here.
 
 ## What this is
 
-This repository is the single source of truth for every skill used across [eva](https://github.com/vvedantb/eva), [vmem](https://github.com/vvedantb/vmem), and future projects. Each skill lives in `skills/<name>/SKILL.md`. Project manifests in `manifests/` define which subset each repo installs.
+- **`vvedantb/skills`** — skills you wrote (zoom-out, code-structure, eva-product-video, etc.)
+- **Upstream repos** — clerk, mattpocock, taste-skill, vercel-labs, etc. via `npx skills add <owner/repo>@<skill>`
+- **Project manifests** — `manifests/eva.json` and `manifests/vmem.json` list custom + upstream sources per project
 
 ## Prerequisites
 
@@ -14,12 +16,12 @@ This repository is the single source of truth for every skill used across [eva](
 ## Repo layout
 
 ```
-skills/<name>/SKILL.md   # one folder per skill (kebab-case name matches frontmatter)
-manifests/eva.json       # skill names for eva
-manifests/vmem.json      # skill names for vmem
-scripts/inventory.mjs    # inventory + copy from eva/vmem
+skills/<name>/SKILL.md     # your custom skills only
+manifests/eva.json         # { custom: [...], upstream: [{ source, skills }] }
+manifests/vmem.json
+scripts/build-manifests.mjs
 scripts/bootstrap-project.mjs
-ATTRIBUTION.md           # upstream sources for vendored skills
+scripts/strip-catalog.mjs
 ```
 
 ## Install into a project
@@ -27,70 +29,54 @@ ATTRIBUTION.md           # upstream sources for vendored skills
 ```bash
 cd your-project
 
-# Install one skill from this catalog
+# One custom skill from this repo
 npx skills add vvedantb/skills@zoom-out -y
 
-# After cloning a project that already has skills-lock.json:
+# One upstream skill (updates flow from upstream directly)
+npx skills add mattpocock/skills@tdd -y
+
+# Restore from skills-lock.json after clone
 npx skills experimental_install
 
-# Check for updates, then pull them
+# Pull updates
 npx skills check
 npx skills update
 ```
 
-## Install globally (all projects on this machine)
+## Bootstrap a project from manifest
 
 ```bash
-npx skills add vvedantb/skills@zoom-out -g -y
-npx skills update -g
+# Fresh install: wipes skills-lock.json + .agents/skills, reinstalls all
+node ../skills/scripts/bootstrap-project.mjs --manifest eva --project ../eva --fresh
+node ../skills/scripts/bootstrap-project.mjs --manifest vmem --project ../vmem --fresh
 ```
 
-Global and project installs are independent. Publishing changes here still requires `npx skills update` in each scope.
-
-## Bootstrap a project from a manifest
-
-```bash
-# From eva or vmem (catalog repo can be a sibling checkout)
-node ../skills/scripts/bootstrap-project.mjs --manifest eva --project .
-node ../skills/scripts/bootstrap-project.mjs --manifest vmem --project ../vmem
-```
-
-The script loops manifest entries and runs `npx skills add vvedantb/skills@<name> -y` for each.
+Installs custom skills from `vvedantb/skills` and upstream skills from their original repos.
 
 ## Day-to-day workflow
 
 | Task | Command |
 |------|---------|
-| Edit a skill | Change `skills/<name>/SKILL.md`, commit, push |
-| Pull updates in a project | `npx skills check` then `npx skills update` |
-| Add a new skill | `npx skills init <name>` locally, move into `skills/`, update manifests, commit |
-| Remove skill from a project | `npx skills remove <name>` |
-| Re-inventory eva + vmem | `node scripts/inventory.mjs --json` |
+| Edit your skill | Change `skills/<name>/SKILL.md`, commit, push |
+| Update custom skill in a project | `npx skills update` (for vvedantb/skills entries) |
+| Update upstream skill | `npx skills update` (pulls from original repo) |
+| Add new custom skill | `npx skills init <name>`, move into `skills/`, add to `scripts/custom-skills.mjs` + manifests |
+| Regenerate manifests | `node scripts/build-manifests.mjs` |
 
 ## Eva-specific note
 
-Eva remote agents read `.agents/skills/` from the **GitHub base branch**, not your global `~/.claude/skills`. After installing skills, commit and push:
+Eva remote agents read `.agents/skills/` from the **GitHub base branch**. After installing, commit and push:
 
 - `skills-lock.json`
-- `.agents/skills/` (generated copies)
-
-Eva's repo skills sync (`packages/backend/convex/_repoSkills/sync.ts`) picks up metadata from `.agents/skills` on the base branch.
+- `.agents/skills/`
 
 ## Which skills belong to which project
 
-- **eva** — 49 skills: see [`manifests/eva.json`](manifests/eva.json)
-- **vmem** — 62 skills: see [`manifests/vmem.json`](manifests/vmem.json)
+- **eva** — see [`manifests/eva.json`](manifests/eva.json) (8 custom + 41 upstream)
+- **vmem** — see [`manifests/vmem.json`](manifests/vmem.json) (6 custom + 56 upstream)
+
+Custom skill list is defined in [`scripts/custom-skills.mjs`](scripts/custom-skills.mjs).
 
 ## Attribution
 
-Vendored skills retain original authorship. See [ATTRIBUTION.md](ATTRIBUTION.md) for upstream repos per skill.
-
-## Maintenance scripts
-
-```bash
-# List skills, detect duplicates across eva/vmem
-node scripts/inventory.mjs
-
-# Re-copy catalog from eva/vmem (destructive to skills/)
-node scripts/inventory.mjs --copy
-```
+See [ATTRIBUTION.md](ATTRIBUTION.md) for custom skills. Upstream skills retain original authorship in their source repos.

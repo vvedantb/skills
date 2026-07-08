@@ -1,64 +1,153 @@
-[
-  "agent-browser",
-  "brandkit",
-  "caveman",
-  "caveman-commit",
-  "caveman-compress",
-  "caveman-help",
-  "caveman-review",
-  "code-structure",
-  "compress",
-  "convex-agent",
-  "convex-create-component",
-  "convex-dev-workflow",
-  "convex-migration-helper",
-  "convex-performance-audit",
-  "convex-rules",
-  "convex-setup-auth",
-  "design-an-interface",
-  "design-taste-frontend",
-  "design-taste-frontend-v1",
-  "edit-article",
-  "einstein-simplify",
-  "elite-powerpoint-designer",
-  "framer-motion-animator",
-  "full-output-enforcement",
-  "git-guardrails-claude-code",
-  "gpt-taste",
-  "grill-me",
-  "high-end-visual-design",
-  "how",
-  "image-to-code",
-  "imagegen-frontend-mobile",
-  "imagegen-frontend-web",
-  "improve-codebase-architecture",
-  "industrial-brutalist-ui",
-  "make-interfaces-feel-better",
-  "migrate-to-shoehorn",
-  "minimalist-ui",
-  "neo4j-cypher-guide",
-  "neo4j-cypher-skill",
-  "neon-postgres",
-  "no-ui-flash",
-  "prd-to-issues",
-  "prd-to-plan",
-  "quality-code",
-  "redesign-existing-projects",
-  "request-refactor-plan",
-  "setup-pre-commit",
-  "stitch-design-taste",
-  "stop-slop",
-  "svg-animations",
-  "tdd",
-  "text-to-lottie",
-  "transitions-dev",
-  "triage-issue",
-  "ubiquitous-language",
-  "upgrading-expo",
-  "vercel-composition-patterns",
-  "vercel-react-best-practices",
-  "web-design-guidelines",
-  "write-a-prd",
-  "write-a-skill",
-  "write-better-error-messages"
-]
+{
+  "custom": [
+    "agent-browser",
+    "code-structure",
+    "convex-dev-workflow",
+    "convex-rules",
+    "how",
+    "svg-animations"
+  ],
+  "upstream": [
+    {
+      "source": "diffusionstudio/lottie",
+      "skills": [
+        "text-to-lottie"
+      ]
+    },
+    {
+      "source": "expo/skills",
+      "skills": [
+        "upgrading-expo"
+      ]
+    },
+    {
+      "source": "get-convex/agent-skills",
+      "skills": [
+        "convex-agent",
+        "convex-create-component",
+        "convex-migration-helper",
+        "convex-performance-audit",
+        "convex-setup-auth"
+      ]
+    },
+    {
+      "source": "hardikpandya/stop-slop",
+      "skills": [
+        "stop-slop"
+      ]
+    },
+    {
+      "source": "Jakubantalik/transitions.dev",
+      "skills": [
+        "transitions-dev"
+      ]
+    },
+    {
+      "source": "jakubkrehel/make-interfaces-feel-better",
+      "skills": [
+        "make-interfaces-feel-better"
+      ]
+    },
+    {
+      "source": "jmsmrgn/einstein-simplify",
+      "skills": [
+        "einstein-simplify"
+      ]
+    },
+    {
+      "source": "JuliusBrussee/caveman",
+      "skills": [
+        "caveman",
+        "caveman-commit",
+        "caveman-compress",
+        "caveman-help",
+        "caveman-review",
+        "compress"
+      ]
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "skills": [
+        "brandkit",
+        "design-taste-frontend",
+        "design-taste-frontend-v1",
+        "full-output-enforcement",
+        "gpt-taste",
+        "high-end-visual-design",
+        "image-to-code",
+        "imagegen-frontend-mobile",
+        "imagegen-frontend-web",
+        "industrial-brutalist-ui",
+        "minimalist-ui",
+        "redesign-existing-projects",
+        "stitch-design-taste"
+      ]
+    },
+    {
+      "source": "mattpocock/skills",
+      "skills": [
+        "design-an-interface",
+        "edit-article",
+        "git-guardrails-claude-code",
+        "grill-me",
+        "improve-codebase-architecture",
+        "migrate-to-shoehorn",
+        "prd-to-issues",
+        "prd-to-plan",
+        "request-refactor-plan",
+        "setup-pre-commit",
+        "tdd",
+        "triage-issue",
+        "ubiquitous-language",
+        "write-a-prd",
+        "write-a-skill"
+      ]
+    },
+    {
+      "source": "neo4j-contrib/neo4j-skills",
+      "skills": [
+        "neo4j-cypher-skill"
+      ]
+    },
+    {
+      "source": "neondatabase/agent-skills",
+      "skills": [
+        "neon-postgres"
+      ]
+    },
+    {
+      "source": "patricio0312rev/skills",
+      "skills": [
+        "framer-motion-animator"
+      ]
+    },
+    {
+      "source": "RhysSullivan/skills",
+      "skills": [
+        "no-ui-flash",
+        "quality-code",
+        "write-better-error-messages"
+      ]
+    },
+    {
+      "source": "tomasonjo/blogs",
+      "skills": [
+        "neo4j-cypher-guide"
+      ]
+    },
+    {
+      "source": "vercel-labs/agent-skills",
+      "skills": [
+        "vercel-composition-patterns",
+        "vercel-react-best-practices",
+        "web-design-guidelines"
+      ]
+    },
+    {
+      "source": "willem4130/claude-code-skills",
+      "skills": [
+        "elite-powerpoint-designer"
+      ]
+    }
+  ]
+}
