@@ -24,7 +24,7 @@ const EVA_MANIFEST = [
   "minimalist-ui", "no-ui-flash", "quality-code", "redesign-existing-projects",
   "stitch-design-taste", "svg-animations", "transitions-dev", "ubiquitous-language",
   "vercel-composition-patterns", "vercel-react-best-practices", "web-design-guidelines",
-  "to-spec", "write-better-error-messages", "zoom-out",
+  "to-spec", "write-better-error-messages",
 ];
 
 const VMEM_MANIFEST = [
@@ -49,7 +49,6 @@ const VMEM_MANIFEST = [
 /** Upstream for skills not in .bak lockfiles. */
 const EXTRA_UPSTREAM = {
   "agent-browser": "vercel-labs/agent-browser",
-  "zoom-out": "mattpocock/skills",
   "svg-animations": "supermemoryai/skills",
   "grill-me": "mattpocock/skills",
   "improve-codebase-architecture": "mattpocock/skills",
